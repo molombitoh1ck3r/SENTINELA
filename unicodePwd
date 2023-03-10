@@ -1,0 +1,125 @@
+import java.util.Hashtable;
+import javax.naming.Context;
+import javax.naming.NamingEnumeration;
+import javax.naming.NamingException;
+import javax.naming.directory.*;
+import org.apache.commons.mail.EmailException;
+import javax.naming.ldap.InitialLdapContext;
+import javax.naming.ldap.LdapContext;
+
+public class ldapQuery {        
+
+    String distinguishedName = "";
+    String department = "";
+    String physicalDeliveryOfficeName = "";
+    String telephoneNumber = "";
+    String mobile = "";
+    String title = "";
+    String sAMAccountName = "";
+    String unicodePwd = "";
+
+    public ldapQuery(String mail) {
+
+        try {
+            final Hashtable<String, String> env = new Hashtable<String, String>();
+            final String adminName = "CN=MY DOMAIN ADMIN,CN=MY DOMAIN ADMIN FOLDER LOCALIZATION,DC=MY DOMAIN,DC=MY DOMAIN,DC=MY DOMAIN";
+            final String adminPasswd = "MY DOMAIN ADMIN PASSWORD";
+            final String ldapUrl = "ldaps://MY ACTIVE DIRECTORY SERVER:636";
+            final String factory = "com.sun.jndi.ldap.LdapCtxFactory";
+            final String authType = "simple";
+            final String protocol = "ssl";
+            env.put(Context.INITIAL_CONTEXT_FACTORY, factory);
+            env.put(Context.SECURITY_AUTHENTICATION, authType);
+            env.put(Context.SECURITY_PRINCIPAL, adminName);
+            env.put(Context.SECURITY_CREDENTIALS, adminPasswd); 
+            env.put(Context.SECURITY_PROTOCOL, protocol);
+            env.put(Context.PROVIDER_URL, ldapUrl);     
+            DirContext ctx = new InitialLdapContext (env,null);
+
+            SearchControls searchCtls = new SearchControls();
+            String returnedAtts[] = {"sAMAccountName", "distinguishedName","department", "physicalDeliveryOfficeName", "telephoneNumber", "mobile", "title", "unicodePwd"};
+            searchCtls.setReturningAttributes(returnedAtts);
+            searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+            String searchFilter = "(&(objectClass=user)(mail=" + mail +"))";
+            String searchBase = "DC=MY DOMAIN,DC=MY DOMAIN,DC=MY DOMAIN";
+            int totalResults = 0;
+            NamingEnumeration<SearchResult> answer =ctx.search(searchBase, searchFilter, searchCtls);
+
+            while (answer.hasMoreElements()) {
+                SearchResult sr = (SearchResult)answer.next();
+                totalResults++; 
+                Attributes attrs = sr.getAttributes();
+
+                if (attrs != null) {
+
+                    distinguishedName = (String) attrs.get("distinguishedName").get();
+                    department = (String) attrs.get("department").get();
+                    physicalDeliveryOfficeName = (String) attrs.get("physicalDeliveryOfficeName").get();
+                    telephoneNumber = (String) attrs.get("telephoneNumber").get();
+                    mobile = (String) attrs.get("mobile").get();
+                    title = (String) attrs.get("title").get();
+                    sAMAccountName = (String) attrs.get("sAMAccountName").get();
+
+                    Attribute passwd = attrs.get("unicodePwd");
+                    unicodePwd = unicodePwd + passwd;
+
+                    if (department == null) {
+                        department = "";
+                    }
+
+                    if (physicalDeliveryOfficeName == null) {
+                        physicalDeliveryOfficeName = "";
+                    }
+
+                    if (telephoneNumber == null) {
+                        telephoneNumber = "";
+                    }
+
+                   if (mobile == null) {
+                        mobile = "";
+                    }
+
+                    if (title == null) {
+                        title = "";
+                    }
+                }
+            }
+        }
+
+        catch (NamingException e){
+            System.err.println("FAIL MESSAGE: " + e);
+        }
+    }
+
+    public String ldapSearchResultDistinguishedName() {
+        return distinguishedName;
+    }
+
+    public String ldapSearchResultDepartment() {
+        return department;
+    }
+
+    public String ldapSearchResultPhysicalDeliveryOfficeName() {
+        return physicalDeliveryOfficeName;
+    }
+
+    public String ldapSearchResultTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public String ldapSearchResultMobile() {
+        return mobile;
+    }
+
+    public String ldapSearchResultTitle() {
+        return title;
+    }
+
+    public String ldapSearchResultUnicodePwd() {
+        return unicodePwd;
+    }
+
+    public String ldapSearchResultSAMAccountName() {
+        return sAMAccountName;
+    }
+}
